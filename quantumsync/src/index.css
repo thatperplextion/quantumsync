@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Theme Transitions */
+  *, *::before, *::after {
+    @apply transition-colors duration-250 ease-theme;
+  }
+
+  /* Light Theme Styles */
+  :root:not(.dark) {
+    --bg-primary: theme(colors.white);
+    --text-primary: theme(colors.slate.900);
+    --border-color: theme(colors.slate.200);
+    color-scheme: light;
+  }
+
+  /* Dark Theme Styles */
+  .dark {
+    --bg-primary: theme(colors.slate.950);
+    --text-primary: theme(colors.white);
+    --border-color: theme(colors.slate.800);
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-[var(--bg-primary)] text-[var(--text-primary)];
+  }
+}
+
+@layer components {
+  .animate-slideIn {
+    animation: slideIn 0.4s ease-out;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(400px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}
